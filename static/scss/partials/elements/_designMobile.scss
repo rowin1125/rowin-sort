@@ -1,0 +1,673 @@
+$shadowBg: #06bebe;
+$baseColor: #00f1f1;
+$writeLineColor: rgb(117, 115, 115);
+$borderRadius: 15px;
+
+.mobile {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0px;
+  bottom: 0px;
+  width: 100%;
+
+  &--mod {
+    overflow: hidden;
+    @media screen and (min-width: 959px) {
+      overflow: visible;
+    }
+  }
+
+  &__heading {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @media screen and (max-height: 600px) {
+      top: -180px;
+    }
+
+    @media screen and (min-height: 601px) and (max-height: 812px) {
+      top: -50px;
+    }
+
+    h1 {
+      color: $bgWhite;
+      // text-shadow: 2px 2px 4px #9abcfd;
+      // text-shadow: 1px 1px 3px #000;
+      font-weight: 700;
+      margin-top: -100px;
+      font-size: 40px;
+      padding: 0 24px;
+      @media screen and (min-width: 400px) {
+        font-size: 50px;
+      }
+      @media screen and (min-width: 960px) {
+        margin-top: auto;
+        font-size: 60px;
+      }
+    }
+  }
+
+  &__container {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    perspective: 9999px;
+    transform: translate(0px, 0%) rotateX(45deg) rotateY(-3deg) rotateZ(40deg)
+      scale(0.5);
+
+    @media screen and (min-width: 500px) and (max-width: 959px) {
+      transform: translate(0px, 0%) rotateX(45deg) rotateY(-3deg) rotateZ(40deg)
+        scale(0.7);
+    }
+
+    @media screen and (min-width: 960px) and (max-width: 1199px) {
+      transform: translate(0px, 0%) rotateX(45deg) rotateY(-3deg) rotateZ(40deg)
+        scale(0.75);
+    }
+
+    @media screen and (min-width: 1200px) {
+      transform: translate(0px, 0%) rotateX(45deg) rotateY(-3deg) rotateZ(40deg)
+        scale(1);
+      left: 7vw;
+    }
+  }
+
+  &__background {
+    position: relative;
+    display: block;
+    width: 350px;
+    max-height: 600px;
+    box-shadow: 20px 20px 73px #062525;
+    border-radius: $borderRadius;
+    background-image: linear-gradient(135deg, $baseColor, #d7ebeb);
+    background-size: cover;
+
+    @media screen and (max-height: 600px) {
+      top: -250px;
+      left: -210px;
+    }
+
+    @media screen and (min-height: 601px) and (max-height: 600px) {
+      top: -120px;
+      left: -90px;
+    }
+
+    @media screen and (max-width: 400px) {
+      width: 310px;
+    }
+
+    &.dark {
+      background-image: linear-gradient(
+        152deg,
+        #b4baff,
+        rgba(67, 83, 255, 0) 74%
+      );
+    }
+  }
+
+  &__bar {
+    position: relative;
+    left: 0px;
+    top: 0px;
+    right: 0px;
+    width: 100%;
+    height: 22px;
+    border-bottom: 2px solid #ffffff;
+    border-top-left-radius: $borderRadius;
+    border-top-right-radius: $borderRadius;
+    background-color: $baseColor;
+
+    .dot {
+      position: absolute;
+      left: 10px;
+      top: 8px;
+      width: 5px;
+      height: 5px;
+      border-radius: 100%;
+      background-color: #fff;
+      &._2 {
+        left: 20px;
+      }
+      &._3 {
+        left: 30px;
+      }
+    }
+  }
+
+  &__text {
+    position: relative;
+    width: 38%;
+    padding: 20px 25px 25px;
+    float: left;
+
+    &.bottom {
+      top: -250px;
+      width: 31%;
+      padding-top: 0px;
+      clear: left;
+      background-image: none;
+
+      &.v2 {
+        top: -32px;
+        width: 80%;
+        margin-left: 30%;
+        float: none;
+        clear: none;
+      }
+    }
+
+    &--large {
+      width: 15%;
+      float: left;
+      font-family: Verdana, Geneva, sans-serif;
+      color: $writeLineColor;
+      font-size: 21px;
+      line-height: 30px;
+    }
+
+    @keyframes writeIntro {
+      from {
+        width: 83%;
+      }
+      to {
+        width: 20%;
+      }
+    }
+
+    &--fitting {
+      position: relative;
+      width: 83%;
+      height: 2px;
+      margin-left: 2%;
+      padding-top: 22px;
+      float: left;
+      border-bottom: 2px solid $writeLineColor;
+      animation: writeIntro 1s infinite alternate;
+    }
+  }
+
+  $randomWidth: random(100);
+  $duration: 1s;
+  @keyframes writerText {
+    from {
+      width: 100%;
+    }
+    to {
+      width: 20%;
+    }
+  }
+
+  &__line {
+    position: relative;
+    width: 100%;
+    height: 2px;
+    margin-top: 7px;
+    clear: left;
+    border-radius: 1px;
+    background-color: $writeLineColor;
+    animation: writerText $duration infinite alternate;
+    &--short {
+      width: 50%;
+    }
+
+    &:nth-child(2) {
+      animation-delay: 0.1s;
+    }
+    &:nth-child(3) {
+      animation-delay: 0.6s;
+    }
+    &:nth-child(4) {
+      animation-delay: 0.8s;
+    }
+    &:nth-child(5) {
+      animation-delay: 1s;
+    }
+    &:nth-child(6) {
+      animation-delay: 0.2s;
+    }
+    &:nth-child(7) {
+      animation-delay: 0.4s;
+    }
+  }
+
+  .squaretower {
+    position: relative;
+    top: -20px;
+    width: 35%;
+    height: 150px;
+    float: left;
+    clear: left;
+    perspective: 330px;
+
+    .playbox {
+      position: relative;
+      left: 0px;
+      top: 50%;
+      right: 0px;
+      z-index: 4;
+      display: block;
+      overflow: visible;
+      width: 65px;
+      height: 65px;
+      margin-right: auto;
+      margin-left: auto;
+      border: 2px solid #fff;
+      border-radius: 8px;
+
+      background-image: linear-gradient(135deg, $baseColor, #adb3ff);
+      transform: translate(0px, -50%) translate3d(-79px, -61px, 70px);
+      &__play-icon {
+        position: absolute;
+        left: 0px;
+        top: 50%;
+
+        right: 0px;
+        display: block;
+        width: 15px;
+        margin-right: auto;
+        margin-left: auto;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        border-left: 15px solid #fff;
+        transform: translate(0px, -50%);
+      }
+      animation: layer-1 1.5s infinite alternate;
+      @keyframes layer-1 {
+        from {
+          transform: translate(0px, -50%) translate3d(-79px, -61px, 70px);
+        }
+        to {
+          transform: translate(-18px, -57%);
+        }
+      }
+
+      &__square {
+        position: absolute;
+        display: block;
+        width: 65px;
+        height: 65px;
+        margin-right: auto;
+        margin-left: auto;
+        border-radius: 8px;
+
+        &-1 {
+          left: 0px;
+          top: 50%;
+          right: 0px;
+          z-index: 3;
+
+          background-color: rgba(178, 185, 255, 0.7);
+
+          animation: layer-2 1.5s infinite alternate;
+          @keyframes layer-2 {
+            from {
+              transform: translate(0px, -50%) translate3d(-62px, -44px, 50px);
+            }
+            to {
+              transform: translate(-18px, -57%);
+            }
+          }
+        }
+
+        &-2 {
+          left: 0px;
+          top: 50%;
+          right: 0px;
+          z-index: 2;
+          background-color: $baseColor;
+          background-image: linear-gradient(315deg, $baseColor, #828dff);
+          animation: layer-3 1.5s infinite alternate;
+          @keyframes layer-3 {
+            from {
+              transform: translate3d(-42px, -92%, 50px);
+            }
+            to {
+              transform: translate(-18px, -57%);
+            }
+          }
+        }
+
+        &-bottom {
+          left: 0px;
+          top: 50%;
+          right: 0px;
+          z-index: 0;
+          background-image: linear-gradient(
+            115deg,
+            $shadowBg 11%,
+            $shadowBg 11%
+          );
+          transform: translate(-18px, -57%);
+        }
+      }
+    }
+
+    &__top-bar {
+      position: relative;
+      left: -2px;
+      top: -6px;
+      z-index: 0;
+      width: 35%;
+      height: 5px;
+      border-top-left-radius: 3px;
+      border-top-right-radius: 3px;
+      background-color: $writeLineColor;
+    }
+  }
+
+  &__bottom-bar {
+    @keyframes posChange {
+      from {
+        padding-top: 0px;
+        padding-left: 0px;
+        box-shadow: 3px 3px 5px $shadowBg;
+      }
+
+      to {
+        padding-top: -10px;
+        padding-left: -5px;
+      }
+    }
+
+    @keyframes posChangeBig {
+      from {
+        top: -230px;
+        left: 10px;
+        box-shadow: 3px 3px 5px $shadowBg;
+      }
+
+      to {
+        top: -240px;
+        left: -20px;
+        box-shadow: 20px 20px 20px $shadowBg;
+      }
+    }
+
+    position: relative;
+    top: -230px;
+    left: 10;
+    width: 25%;
+    height: 200px;
+    margin-left: 8%;
+    clear: left;
+    border-radius: 5px;
+    // box-shadow: 10px 10px 15px $shadowBg;
+    background-image: linear-gradient(135deg, $baseColor, #adb3ff);
+    animation: posChangeBig 1s infinite alternate;
+    border-radius: $borderRadius;
+
+    &:nth-child(1) {
+      animation-duration: 2.4s;
+      animation-delay: 1;
+    }
+  }
+
+  &__mountain {
+    position: relative;
+    left: -20px;
+    top: 0px;
+    width: 62%;
+    padding: 25px;
+    float: left;
+    perspective: 9999px;
+
+    &--real {
+      position: relative;
+      left: 0px;
+      top: -70px;
+      right: 0px;
+      display: block;
+      overflow: hidden;
+      width: 80%;
+      height: 100px;
+      margin-right: auto;
+      margin-left: auto;
+      border-radius: 5px;
+
+      background-image: linear-gradient(
+        315deg,
+        rgba(232, 235, 255, 0.9),
+        #b4baff
+      );
+      box-shadow: 29px 29px 15px $shadowBg;
+      animation: posChange 1s infinite alternate-reverse;
+    }
+
+    &--image {
+      position: relative;
+      left: -25px;
+      top: 65px;
+      right: 0px;
+      display: block;
+      width: 70%;
+      height: 80%;
+      margin-right: auto;
+      margin-left: auto;
+      border-radius: 5px;
+      background-image: linear-gradient(180deg, #dee2ff, #b6bdff);
+      -ms-transform: rotate(45deg);
+      transform: rotate(45deg);
+
+      &._2 {
+        position: absolute;
+        left: 25px;
+        top: 58px;
+        right: 0px;
+        width: 90%;
+        height: 110%;
+
+        background-image: linear-gradient(
+          90deg,
+          hsla(0, 0%, 100%, 0.7),
+          rgba(182, 189, 255, 0.66) 51%
+        );
+      }
+      &.shrunked {
+        left: -6px;
+        top: 31px;
+        &._2 {
+          left: 25px;
+          top: 30px;
+          right: 0px;
+        }
+      }
+    }
+  }
+
+  .small {
+    top: 30px;
+    width: 90%;
+    height: 60px;
+    float: left;
+    clear: left;
+    box-shadow: 10px 10px 5px $shadowBg;
+    opacity: 0.81;
+    &.no-mountains {
+      top: 50px;
+      opacity: 0.51;
+    }
+  }
+
+  &__strip {
+    position: absolute;
+    left: 0px;
+    top: 22px;
+    z-index: 0;
+    width: 38%;
+    height: 90%;
+    background-image: linear-gradient(135deg, $baseColor, #d7ebeb, 100%);
+    &.dark {
+      background-image: linear-gradient(
+        180deg,
+        #9aa3ff,
+        rgba(67, 83, 255, 0) 44%
+      );
+    }
+  }
+
+  .info {
+    position: relative;
+    left: 0px;
+    top: -50px;
+    right: 0px;
+    width: 62%;
+    padding: 30px;
+    float: left;
+    perspective: 9999px;
+
+    &__column {
+      position: relative;
+      z-index: 10;
+      width: 29.11%;
+      margin-right: 1.11%;
+      margin-left: 3.11%;
+      padding: 12px;
+      float: left;
+      border-radius: 5px;
+      background-image: linear-gradient(135deg, $baseColor, #adb3ff);
+      box-shadow: 11px 11px 0 0 $shadowBg;
+
+      &--circle {
+        position: relative;
+        display: block;
+        width: 20px;
+        height: 20px;
+        margin-right: auto;
+        margin-left: auto;
+        border: 2px solid #fff;
+        border-radius: 100%;
+      }
+    }
+
+    &__string {
+      position: relative;
+      top: 30px;
+      width: 30%;
+      float: left;
+
+      &--square {
+        position: relative;
+        left: 0px;
+        top: 0px;
+        right: 0px;
+        display: block;
+        width: 25px;
+        height: 25px;
+        margin-right: auto;
+        margin-left: auto;
+        border-radius: 5px;
+        background-image: linear-gradient(135deg, $baseColor, #adb3ff);
+        box-shadow: 11px 11px 0 -1px $shadowBg;
+        &._2 {
+          top: 60px;
+          z-index: 1;
+        }
+        &._3 {
+          top: -10px;
+        }
+      }
+
+      &--connector {
+        position: absolute;
+        left: 0px;
+        top: 22px;
+        right: 0px;
+        display: block;
+        width: 2px;
+        height: 25px;
+        margin-right: auto;
+        margin-left: auto;
+        background-color: #d9ddff;
+        box-shadow: 11px 11px 0 0 $shadowBg;
+      }
+    }
+  }
+
+  &--arrow {
+    position: absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 44px;
+    display: block;
+    width: 2px;
+    height: 42px;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: $writeLineColor;
+
+    &--small {
+      position: absolute;
+      left: -4px;
+      right: 0px;
+      bottom: 0px;
+      width: 2px;
+      height: 10px;
+      background-color: $writeLineColor;
+      -ms-transform: rotate(-45deg);
+      transform: rotate(-45deg);
+      &.v2 {
+        left: 4px;
+        -ms-transform: rotate(45deg);
+        transform: rotate(45deg);
+      }
+    }
+  }
+
+  .circletower {
+    position: absolute;
+    left: 0%;
+    top: -66px;
+    width: 80px;
+    height: 80px;
+    perspective: 9999px;
+
+    &--top {
+      position: absolute;
+      left: -8px;
+      top: -4px;
+      right: 0px;
+      z-index: 5;
+      display: block;
+      width: 40px;
+      height: 40px;
+      margin-right: auto;
+      margin-left: auto;
+      border-radius: 100%;
+      background-color: rgba(0, 239, 239, 0.945);
+
+      background-image: linear-gradient(
+        135deg,
+        $baseColor,
+        rgba(230, 252, 252, 0.705)
+      );
+      transform: translate3d(0px, 0px, 10px);
+      &._2 {
+        left: 25px;
+        top: 10px;
+        right: 0px;
+        z-index: 4;
+        transform: translate3d(0px, 0px, 10px);
+        background-color: rgba(0, 239, 239, 0.678);
+
+        background-image: linear-gradient(
+          135deg,
+          rgba(0, 239, 239, 0.349),
+          #d7ebeb41
+        );
+      }
+      &._3 {
+        left: 47px;
+        top: 23px;
+        z-index: 3;
+        background-color: transparent;
+
+        background-image: linear-gradient(135deg, $baseColor, #d7ebeb52);
+        box-shadow: 23px 19px 0 0 rgba(6, 190, 190, 0.414);
+        transform: translate(0px, 0px);
+      }
+    }
+  }
+}

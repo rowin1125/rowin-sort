@@ -1,0 +1,11 @@
+// Global styling
+@import './partials/global/browserRes';
+@import './partials/global/global';
+
+// Elements
+@import './partials/elements/elements.scss';
+
+// Pages
+@import './partials/pages/home/homepage';
+// @import './partials/pages/404/404';
+// @import './partials/pages/auth/auth';

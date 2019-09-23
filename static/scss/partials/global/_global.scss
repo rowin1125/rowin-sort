@@ -1,0 +1,12 @@
+@import './variables';
+@import './utilities';
+
+body {
+  background: linear-gradient(to right, $primary 0%, $bgGlobal 100%);
+
+  .cv {
+    img {
+      width: 100%;
+    }
+  }
+}

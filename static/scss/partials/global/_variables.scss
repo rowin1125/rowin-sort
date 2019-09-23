@@ -1,0 +1,131 @@
+@import 'utilities';
+
+//-- colors:start --//
+$yc-orange: #f77f00;
+$yc-brand: $yc-orange !default;
+$yc-brand-dark: darken($yc-brand, 25%) !default;
+$yc-black: #111111;
+$yc-grey: #e0e0e1;
+$next-green: #38b1ad;
+$next-green-dark: darken($next-green, 15%);
+//-- colors:end --//
+
+// RGBA colors for transitions
+$yc-brand-overlay-hover: rgba(17, 17, 17, 0.8) !default;
+$next-green-overlay-hover: rgba(19, 151, 140, 0.8);
+
+$bgGlobal: #f589bb;
+$bgWhite: #f8f8f8;
+$primary: #f1d4ed;
+$secondary: #f8f8f8;
+
+// Navs
+$fg: $primary;
+$pi: 3.14;
+$menu-items: 4;
+
+$palettes: (
+  white: (
+    base: #ffffff,
+    off: #edeeef,
+    pale: #f6f6f9,
+    transparent: rgba(255, 255, 255, 0)
+  ),
+  black: (
+    base: $yc-black,
+    true: #000000,
+    footer: #111111,
+    menu: #292929,
+    overlay: rgba(17, 17, 17, 0.6),
+    transparent: rgba(17, 17, 17, 0)
+  ),
+  grey: (
+    base: $yc-grey,
+    dark: #2d2d2d,
+    border: #e8e8e8,
+    input: #c3c3c3,
+    tertiary: #b2b2b2,
+    placeholder: #717171,
+    text: #565656,
+    background: #f8f9fa,
+    light: #fafafa,
+    hover: #f0f0f0,
+    mobile_submenu: #373737,
+    carousel_indicator: #ececec,
+    status: #f2f2f2,
+    icon: #787878,
+    blue_tone: #8c97b2
+  ),
+  green: (
+    switch: #00df5b
+  ),
+  brand: (
+    base: $yc-brand,
+    orange: #f77f00,
+    dark: $yc-brand-dark,
+    overlay_hover: $yc-brand-overlay-hover
+  ),
+  notifications: (
+    base: $yc-black,
+    neutral: $yc-grey,
+    success: #41d54a,
+    error: #fc3411,
+    warning: $yc-orange,
+    brand: $yc-brand
+  ),
+  social: (
+    facebook: #3a5997,
+    twitter: #41a1f6
+  ),
+  form: (
+    abbr: #ff441a
+  ),
+  alert: (
+    light_blue: #b9e5e7,
+    turquoise: #007d88,
+    light_green: #b2f5cd,
+    dark_green: #005523,
+    light_red: #ffccc1,
+    dark_red: #ff441a
+  )
+);
+
+//-- typo:start --//
+$font-heading: 'Montserrat', sans-serif;
+$font-body: 'Montserrat', sans-serif;
+//-- typo:end --//
+
+$base-font-size-mobile: 14px;
+$base-font-size: 16px;
+
+// scss-lint:disable NameFormat
+@if variable-exists(_blk_compatibility) and variable-exists(_blk_base-font-size)
+{
+  @if $_blk_compatibility == true {
+    $base-font-size: $_blk_base-font-size;
+  }
+}
+
+// Pixel breakpoints
+// ==============================
+$pxl--screen-xxs: 20 * $base-font-size;
+$pxl--screen-xs: 30 * $base-font-size;
+$pxl--screen-sm: 48 * $base-font-size;
+$pxl--screen-md: 64 * $base-font-size;
+$pxl--screen-lg: 75 * $base-font-size;
+
+// Screen breakpoints
+// ==============================
+$screen-xxs: em($pxl--screen-xxs);
+$screen-xs: em($pxl--screen-xs);
+$screen-sm: em($pxl--screen-sm);
+$screen-md: em($pxl--screen-md);
+$screen-lg: em($pxl--screen-lg);
+
+$_avatar-size-xs: 96px;
+$_avatar-size-sm-up: 144px;
+
+$_blk_compatibility: false !default;
+// scss-lint:enable NameFormat
+
+$transition-time: 0.12s;

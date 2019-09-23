@@ -1,0 +1,68 @@
+
+.text {
+  &--bold {
+    font-weight: 700;
+  }
+
+  &--italic {
+    font-style: italic;
+  }
+
+  &--underline {
+    text-decoration: underline;
+  }
+
+  &--uppercase {
+    text-transform: uppercase;
+  }
+
+  &--lowercase {
+    text-transform: lowercase;
+  }
+
+  &--capitalize {
+    text-transform: capitalize;
+  }
+
+  &--left {
+    text-align: left;
+  }
+
+  &--right {
+    text-align: right;
+  }
+
+  &--center {
+    text-align: center;
+  }
+
+  &--orange,
+  &--warning {
+    color: palette(brand, orange);
+  }
+
+  &--brand {
+    color: palette(brand);
+  }
+
+  &--white {
+    color: palette(white);
+  }
+
+  &--grey,
+  &--gray {
+    color: palette(grey, tertiary);
+  }
+
+  &--tertiary {
+    color: palette(grey, tertiary);
+  }
+
+  &--success {
+    color: palette(notifications, success);
+  }
+
+  &--error {
+    color: palette(notifications, error);
+  }
+}

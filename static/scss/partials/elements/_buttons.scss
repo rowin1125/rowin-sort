@@ -1,0 +1,283 @@
+button:not(.btn):focus {
+  outline: none;
+}
+
+.btn {
+  $_btn-height: 40px;
+  $_btn-top-padding: 10px;
+  $_btn-bottom-padding: 10px;
+  $_btn-line-height: $_btn-height - $_btn-top-padding - $_btn-bottom-padding;
+
+  position: relative;
+  display: inline-block;
+  min-height: rem($_btn-height, $base-font-size-mobile);
+  margin: 0;
+  padding: rem($_btn-top-padding - 1px, $base-font-size-mobile) rem(16px, $base-font-size-mobile) rem($_btn-bottom-padding - 1px, $base-font-size-mobile);
+  border: 1px solid transparent;
+  border-radius: 0;
+  outline: none;
+  white-space: nowrap;
+  font-family: $font-heading;
+  font-size: rem(16px);
+  font-weight: normal;
+  line-height: rem($_btn-line-height, $base-font-size-mobile);
+  text-align: center;
+  text-decoration: none;
+  transition: border $transition-time ease-in-out, background-color $transition-time ease-in-out, color $transition-time ease-in-out;
+  cursor: pointer;
+  vertical-align: middle;
+  user-select: none;
+  text-overflow: ellipsis;
+
+  @include breakpoint(sm) {
+    min-height: rem($_btn-height);
+    padding: rem($_btn-top-padding - 1px) rem(16px) rem($_btn-bottom-padding - 1px);
+    line-height: rem($_btn-line-height);
+  }
+
+  &--icon {
+    width: rem($_btn-height, $base-font-size-mobile);
+    height: rem($_btn-height - 2px, $base-font-size-mobile);
+    padding: 0;
+    background: transparent;
+
+    @include breakpoint(sm) {
+      width: rem($_btn-height);
+      height: rem($_btn-height - 2px);
+    }
+
+    .nyc-icon::before {
+      line-height: rem($_btn-height - 1px, $base-font-size-mobile);
+
+      @include breakpoint(sm) {
+        line-height: rem($_btn-height - 1px);
+      }
+    }
+  }
+
+
+
+  &:not(.btn--icon) {
+    min-width: 100%;
+    max-width: rem(197px);
+    white-space: normal;
+    word-break: break-word;
+    hyphens: auto;
+
+    @include breakpoint(sm) {
+      &:not(.btn--wide) {
+        min-width: rem(256px);
+      }
+    }
+
+    & + & {
+      margin-top: rem(8px, $base-font-size-mobile);
+
+      @include breakpoint(sm) {
+        margin-top: 0;
+      }
+    }
+
+    .nyc-icon {
+      position: relative;
+      top: 2px;
+    }
+  }
+
+  &:not(.btn--outline):not(.btn--disabled):not(.btn--loading) {
+    &:hover {
+      &.btn--primary {
+        background-color: palette(white);
+        border: 1px solid palette(brand, base);
+        color: palette(brand, base);
+      }
+
+      &.btn--secondary {
+        border: 1px solid palette(black, true);
+        background-color: palette(white);
+        color: palette(black, true);
+      }
+
+      &.btn--tertiary {
+        border: 1px solid palette(grey);
+        background-color: palette(white);
+        color: palette(grey, tertiary);
+      }
+    }
+
+    &:active {
+      box-shadow: none;
+
+      &.btn--secondary {
+        border-color: lighten(palette(black, true), 40%);
+        background-color: lighten(palette(black, true), 40%);
+      }
+
+      &.btn--tertiary {
+        border-color: lighten(palette(grey, tertiary), 10%);
+        background-color: lighten(palette(grey, tertiary), 10%);
+      }
+
+      &:hover {
+        color: palette(white);
+      }
+
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+
+  &:focus {
+    outline: none;
+    color: palette(white);
+  }
+
+  &.btn--outline {
+    &:not(.btn--disabled) {
+      &:hover {
+        &.btn--primary {
+          color: palette(white);
+          background-color: palette(brand, base);
+        }
+
+        &.btn--secondary {
+          background-color: palette(black, true);
+          color: palette(white);
+        }
+
+        &.btn--tertiary {
+          border-color: palette(grey, tertiary);
+          background-color: palette(grey, tertiary);
+          color: palette(white);
+        }
+      }
+
+      &:active {
+        &.btn--secondary {
+          border-color: lighten(palette(black, true), 40%);
+          background-color: lighten(palette(black, true), 40%);
+        }
+
+        &.btn--tertiary {
+          border-color: lighten(palette(grey, tertiary), 10%);
+          background-color: lighten(palette(grey, tertiary), 10%);
+        }
+      }
+    }
+  }
+
+  &--primary {
+    color: palette(white);
+    background-color: palette(brand, base);
+    border-radius: 4px;
+  }
+
+  &--secondary {
+    background-color: palette(black, true);
+    color: palette(white);
+  }
+
+  &--tertiary {
+    background-color: palette(grey, tertiary);
+    color: palette(white);
+  }
+
+  &--outline {
+    border: 1px solid palette(grey, border);
+    color: palette(white);
+
+    &.btn--primary {
+      background-color: transparent;
+      border: 1px solid palette(brand, base);
+      border-radius: 4px;
+    }
+
+    &.btn--secondary {
+      border: 1px solid palette(black, true);
+      background-color: palette(white);
+      color: palette(black, true);
+    }
+
+    &.btn--tertiary {
+      border: 1px solid palette(grey);
+      background-color: palette(white);
+      color: palette(grey, tertiary);
+
+      &:focus {
+        color: palette(grey, tertiary);
+      }
+    }
+  }
+
+  &--wide {
+    display: block;
+    width: 100%;
+  }
+
+  &:not(.btn--wide) {
+    & + & {
+      @include breakpoint(md) {
+        margin-left: rem(16px);
+      }
+    }
+  }
+
+  &--dash {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    hr {
+      @include hr-color(palette(grey));
+      flex: 1;
+    }
+
+    .btn {
+      min-width: rem(197px, $base-font-size-mobile);
+
+      @include breakpoint(sm) {
+        min-width: rem(197px);
+      }
+    }
+  }
+
+  &--disabled {
+    &,
+    &[disabled] {
+      opacity: .65;
+      cursor: not-allowed;
+
+      &:not(.btn--outline):hover {
+        color: palette(white);
+      }
+    }
+  }
+}
+
+p,
+ol,
+ul,
+dl,
+.btn--wide {
+  + .btn--wide {
+    margin-top: rem(16px, $base-font-size-mobile);
+
+    @include breakpoint(sm) {
+      margin-top: rem(16px);
+    }
+  }
+}
+
+// scss-lint:disable all
+.navigation__items {
+  .btn {
+    min-width: rem(121px, $base-font-size-mobile) !important;
+
+    @include breakpoint(sm) {
+      min-width: rem(121px) !important;
+    }
+  }
+}
+
+// scss-lint:eneble all

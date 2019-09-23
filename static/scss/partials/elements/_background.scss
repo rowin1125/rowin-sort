@@ -1,0 +1,26 @@
+.bg {
+  &--white {
+    background-color: palette(white);
+  }
+
+  &--gray {
+    background-color: palette(white, pale);
+  }
+
+  &--dark-grey,
+  &--dark-gray {
+    background-color: palette(grey, dark);
+  }
+
+  &--black {
+    background-color: palette(black, base);
+  }
+
+  &--brand {
+    background-color: palette(brand);
+  }
+
+  &--orange {
+    background-color: palette(brand, orange);
+  }
+}

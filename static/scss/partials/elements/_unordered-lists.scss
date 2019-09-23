@@ -1,0 +1,249 @@
+// Use Qualifying Element because we want to use the same `.list` class
+// scss-lint:disable QualifyingElement
+.list {
+  &__title {
+    padding: rem(16px, $base-font-size-mobile);
+    padding-bottom: rem(8px);
+
+    @include breakpoint(sm) {
+      padding: rem(32px);
+      padding-bottom: rem(16px);
+    }
+
+    + p {
+      margin-top: 0;
+      padding: rem(16px, $base-font-size-mobile);
+      padding-top: 0;
+
+      @include breakpoint(sm) {
+        padding: rem(32px);
+        padding-top: 0;
+      }
+    }
+
+    .input--with-arrow {
+      line-height: 1.5;
+    }
+  }
+
+  &__icon-arrow::before {
+    @include rem(margin-left, 10px);
+    @include rem(margin-top, 2px);
+
+    right: 2rem;
+    font-size: 80%;
+    line-height: inherit;
+  }
+
+  &--arrows {
+    li {
+      display: flex;
+      font-size: 1rem;
+      line-height: 1.5rem;
+
+      > a {
+        text-decoration: none;
+      }
+
+      &::after {
+        @include rem(margin-right, 8px);
+
+        position: absolute;
+        right: 0;
+        margin-top: 2px;
+        font-size: 80%;
+        line-height: inherit;
+      }
+    }
+  }
+
+  .list__title + .card__body {
+    padding-top: 0;
+  }
+
+  &--checkmarks {
+    display: flex;
+    flex-direction: column;
+
+    li {
+      display: flex;
+      padding-bottom: rem(16px, $base-font-size-mobile);
+      font-size: 1rem;
+
+      @include breakpoint(sm) {
+        padding-bottom: rem(16px);
+      }
+
+      &:last-of-type {
+        padding-bottom: 0;
+      }
+
+      &::before {
+        margin-right: rem(16px);
+        font-size: rem(22px);
+      }
+    }
+  }
+
+  &--links {
+    margin-top: 0;
+
+    data {
+      margin-left: rem(10px, $base-font-size-mobile);
+      font-weight: 700;
+
+      @include breakpoint(sm) {
+        margin-left: rem(10px);
+      }
+    }
+
+    li {
+      display: flex;
+      width: 100%;
+      padding: rem(16px, $base-font-size-mobile);
+      border-top: 1px solid palette(grey, border);
+
+      @include breakpoint(sm) {
+        padding: rem(16px) rem(32px);
+
+        &:last-of-type {
+          padding-bottom: rem(32px);
+        }
+      }
+
+      &:hover {
+        box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+
+        a {
+          color: palette(grey, text);
+        }
+      }
+    }
+
+    img {
+      align-self: start;
+    }
+
+    a,
+    span {
+      display: flex;
+      overflow: hidden;
+      width: 100%;
+      text-decoration: none;
+      text-overflow: ellipsis;
+      justify-content: space-between;
+    }
+  }
+
+  &--collapse {
+    margin-top: 0;
+    padding-bottom: 0;
+
+    + .list__title {
+      padding-top: 0;
+    }
+
+    &:last-of-type {
+      padding-bottom: rem(32px, $base-font-size-mobile);
+
+      @include breakpoint(sm) {
+        padding-bottom: rem(32px);
+      }
+    }
+
+    a {
+      text-decoration: none;
+
+      .list__item {
+        display: inline-flex;
+        width: 100%;
+        padding: rem(16px, $base-font-size-mobile);
+        border-top: 1px solid palette(grey, border);
+        justify-content: space-between;
+
+        @include breakpoint(sm) {
+          padding: rem(16px) rem(32px);
+
+          &:hover {
+            box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+
+            p {
+              color: palette(grey, text);
+            }
+          }
+        }
+
+        &:last-of-type {
+          border-bottom: 1px solid palette(grey, border);
+        }
+
+        &.no-border {
+          border-bottom: 0;
+        }
+
+        &--open {
+          p {
+            border-bottom: 0;
+            font-weight: 700;
+          }
+
+          .list--arrow::before {
+            transform: rotate(0.5turn);
+          }
+        }
+      }
+    }
+  }
+
+  &--arrow {
+    &::before {
+      position: relative;
+      top: 3px;
+      color: palette(brand);
+      transition: all 0.3s ease-in;
+    }
+  }
+
+  &--squares {
+    li {
+      display: flex;
+      font-size: 1rem;
+
+      &:last-of-type {
+        padding-bottom: 0;
+      }
+
+      &::before {
+        @include rem(margin, 7px 16px 0, 8px 16px 0 0);
+        @include rem(font-size, 8px);
+      }
+
+      > a {
+        font-weight: 700;
+      }
+    }
+  }
+}
+
+.list--checkmarks,
+.list--squares {
+  + p {
+    @include rem(margin-top, 16px);
+  }
+}
+
+p {
+  + .list--checkmarks,
+  + .list--squares {
+    @include rem(margin-top, 16px);
+  }
+}
+
+h3 {
+  + .list--checkmarks,
+  + .list--squares {
+    @include rem(margin-top, 8px);
+  }
+}

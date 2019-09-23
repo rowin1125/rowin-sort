@@ -1,0 +1,115 @@
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  font-weight: normal;
+  letter-spacing: -0.7px;
+  color: palette(white);
+  text-shadow: 1px 1px 3px #000;
+
+  @include breakpoint(sm) {
+    font-size: rem(42px);
+  }
+
+  + {
+    p,
+    ul,
+    ol,
+    dl {
+      margin-top: rem(8px, $base-font-size-mobile);
+
+      @include breakpoint(sm) {
+        margin-top: rem(8px);
+      }
+    }
+  }
+}
+
+p,
+ol,
+ul,
+dl {
+  margin: 0;
+  font-size: rem(20px);
+  letter-spacing: -0.1px;
+  color: palette(white);
+  text-shadow: 1px 1px 5px #000;
+
+  + {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      color: palette(black);
+      margin-top: rem(16px, $base-font-size-mobile);
+
+      @include breakpoint(sm) {
+        margin-top: rem(16px);
+      }
+    }
+  }
+}
+
+ol,
+ul,
+dl {
+  & + & {
+    margin-top: rem(8px, $base-font-size-mobile);
+
+    @include breakpoint(sm) {
+      margin-top: rem(8px);
+    }
+  }
+}
+
+p + p {
+  margin-top: rem(16px, $base-font-size-mobile);
+
+  @include breakpoint(sm) {
+    margin-top: rem(16px);
+  }
+}
+
+em {
+  font-style: italic;
+}
+
+h1,
+h2,
+h3 {
+  font-size: rem(20px, $base-font-size-mobile);
+  line-height: 1.2;
+
+  @include breakpoint(md) {
+    font-size: rem(42px);
+  }
+}
+
+h4 {
+  font-size: rem(18px);
+  font-weight: 600;
+}
+
+h5 {
+  font-size: rem(16px);
+}
+
+h6 {
+  font-size: rem(14px);
+}
+
+a {
+  margin: 0;
+  font-weight: normal;
+  letter-spacing: -0.7px;
+  color: palette(black);
+
+  &:hover {
+    color: palette(grey, tertiary);
+  }
+}

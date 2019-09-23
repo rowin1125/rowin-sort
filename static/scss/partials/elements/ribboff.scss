@@ -1,0 +1,125 @@
+.ribboff {
+  position: relative;
+  min-height: 475px;
+  padding: 45px 0;
+  -moz-osx-font-smoothing: grayscale;
+  -webkit-font-smoothing: antialiased;
+  margin-bottom: -56px;
+
+  @include breakpoint(sm) {
+    min-height: 784px;
+  }
+
+  .container-fluid {
+    padding-left: rem(16px, $base-font-size-mobile);
+    padding-right: rem(32px, $base-font-size-mobile);
+
+    @include breakpoint(sm) {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    @include device-range(375px, 812px) {
+      @media (orientation: landscape) {
+        padding-left: rem(16px, $base-font-size-mobile);
+        padding-right: rem(32px, $base-font-size-mobile);
+      }
+    }
+  }
+
+  &--homepage {
+    min-height: 350px;
+
+    @include breakpoint(sm) {
+      min-height: 397px;
+      padding: 85px 0;
+    }
+
+    @include breakpoint(md) {
+      min-height: 329px;
+    }
+  }
+
+  &--small {
+    min-height: 300px;
+
+    .ribboff--offset {
+      margin-top: 30px;
+
+      @include breakpoint(sm) {
+        margin-top: 60px;
+      }
+    }
+  }
+
+  &.ribboff--with-nav {
+    .ribboff--offset {
+      margin-top: 30px;
+
+      @include breakpoint(sm) {
+        margin-top: 200px;
+      }
+    }
+  }
+
+  &__image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    overflow: hidden;
+    min-width: 100%;
+    height: 100%;
+    background-color: palette(grey);
+    background-position: 40px 56px;
+    background-size: cover;
+
+    @include breakpoint(sm) {
+      background-position: center 27.5%;
+    }
+
+    @media screen and (min-width: 1400px) {
+      background-position: center 47.5%;
+    }
+  }
+
+  &__heading {
+    position: relative;
+    display: inline;
+    padding: 0 rem(8px, $base-font-size-mobile);
+    background-color: transparent;
+    color: palette(white);
+    font-family: $font-heading;
+    font-size: rem(42px, $base-font-size-mobile);
+    font-weight: normal;
+    letter-spacing: 0;
+    line-height: rem(40px, $base-font-size-mobile);
+    -webkit-box-decoration-break: clone;
+    box-decoration-break: clone;
+
+    @include breakpoint(sm) {
+      padding: 0 rem(8px);
+      font-size: rem(44px);
+      line-height: rem(43px);
+    }
+  }
+
+  &__text {
+    font-size: rem(22px);
+    max-width: 500px;
+    color: palette(white);
+    line-height: normal;
+
+    @include breakpoint(sm) {
+      padding: 0 rem(8px);
+      max-width: 600px;
+    }
+  }
+
+  &__search {
+    height: 100%;
+    position: absolute;
+    top: calc(50% - 56px);
+    left: calc(50% - 64px); // 64 = 2 * 32px of container
+  }
+}

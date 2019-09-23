@@ -1,0 +1,141 @@
+// TODO: Refactor!
+
+@function generate-helper-selector($prefix, $suffix, $breakpoint: null) {
+  $selector: '';
+
+  @if $suffix > 0 {
+    $suffix: '#{$suffix}x';
+  }
+
+  @if $breakpoint == null {
+    $selector: "#{$prefix}-#{$suffix}";
+  }
+  @else {
+    $selector: "#{$prefix}-#{$breakpoint}-#{$suffix}";
+  }
+
+  @return $selector;
+}
+
+@mixin spacing-list($kind, $direction-side) {
+  @if $kind != margin or $kind != padding {
+    $directions: (top: t, right: r, bottom: b, left: l);
+    $given-direction: map-get($directions, $direction-side);
+
+    @if $given-direction != null {
+      $breakpoints: (null, 'sm', 'md', 'lg');
+
+      @each $breakpoint in $breakpoints {
+        @include breakpoint($breakpoint) {
+          @for $i from 1 through 10 {
+            $selector: generate-helper-selector($given-direction, $i, $breakpoint);
+            $spacing: 4 * $i;
+
+            &#{$selector} {
+              @if $breakpoint == null {
+                @if $i == 1 {
+                  #{$kind}-#{$direction-side}: rem(($spacing * 2) * 1px, $base-font-size-mobile);
+                }
+                @else {
+                  #{$kind}-#{$direction-side}: rem($spacing * 1px, $base-font-size-mobile);
+                }
+
+                @include breakpoint(sm) {
+                  #{$kind}-#{$direction-side}: rem(($spacing * 2) * 1px);
+                }
+              }
+              @else {
+                #{$kind}-#{$direction-side}: rem(($spacing * 2) * 1px);
+              }
+            }
+          }
+
+          $i: 0;
+          $selector: generate-helper-selector($given-direction, $i, $breakpoint);
+
+          &#{$selector} {
+            #{$kind}-#{$direction-side}: rem(($i) * 1px, $base-font-size-mobile);
+
+            @if $breakpoint == null {
+              @include breakpoint(sm) {
+                #{$kind}-#{$direction-side}: rem(($i) * 1px);
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.m {
+  @include spacing-list(margin, top);
+  @include spacing-list(margin, right);
+  @include spacing-list(margin, bottom);
+  @include spacing-list(margin, left);
+}
+
+.p {
+  @include spacing-list(padding, top);
+  @include spacing-list(padding, right);
+  @include spacing-list(padding, bottom);
+  @include spacing-list(padding, left);
+}
+
+.full-width-content {
+  @include screen-max(767px) {
+    margin-right: rem(-16px, $base-font-size-mobile);
+    margin-left: rem(-16px, $base-font-size-mobile);
+  }
+}
+
+// Move this
+.b {
+  &-0 {
+    bottom: 0;
+  }
+}
+
+.bb {
+  border-bottom: 1px solid palette(grey, border);
+
+  &-2 {
+    border-bottom: 2px solid palette(grey, border);
+  }
+}
+
+.bt {
+  border-top: 1px solid palette(grey, border);
+
+  &-2 {
+    border-top: 2px solid palette(grey, border);
+  }
+}
+
+.bt-0 {
+  &,
+  &:first-of-type,
+  &:last-of-type {
+    border-top: 0;
+  }
+
+  @at-root .card__body + .card__body#{&} {
+    border-top: 0;
+  }
+}
+
+.bb-0 {
+  &,
+  &:first-of-type,
+  &:last-of-type {
+    border-bottom: 0;
+  }
+}
+
+.clearfix {
+  @include clearfix;
+}
+
+.pull-right {
+  float: right;
+}

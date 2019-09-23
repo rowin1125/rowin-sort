@@ -1,0 +1,75 @@
+.footer {
+  background-color: rgba(255, 255, 255, 0);
+  box-shadow: 0px 9px 17px 9px rgba(255, 255, 255, 0);
+  position: relative;
+  height: auto;
+  bottom: 0;
+
+  h2 {
+    color: $bgWhite;
+    font-weight: bold;
+    text-shadow: 1px 1px 3px #000;
+    // font-size: 30px;
+  }
+  p {
+    color: $bgWhite;
+    font-weight: 600;
+    text-shadow: 1px 1px 5px #000;
+    font-size: rem(16px);
+  }
+
+  &__container {
+    @media screen and (max-width: 969px) {
+      justify-content: flex-start !important;
+    }
+  }
+
+  &__social {
+    display: inline-flex;
+    li {
+      padding: 0 16px;
+    }
+    &--item {
+      text-decoration: none;
+      i {
+        box-shadow: 1p 1px 1px #fff;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: $fg;
+        border-radius: 100%;
+        width: 80px;
+        height: 80px;
+        // border: 1px solid $bgWhite;
+
+        &:hover {
+          background: white;
+          // border: 1px solid $primary;
+          color: #1b8ecf;
+        }
+        &::before {
+          font-size: 30px;
+        }
+        @media screen and (max-width: 360px) {
+          width: 40px;
+          height: 40px;
+          bottom: 0px;
+          &::before {
+            font-size: 20px;
+          }
+        }
+        @media screen and (min-width: 361px) and (max-width: 969px) {
+          width: 55px;
+          height: 55px;
+          bottom: 0px;
+        }
+      }
+    }
+  }
+
+  // .menu-item {
+  //   top: unset;
+  //
+  // }
+}

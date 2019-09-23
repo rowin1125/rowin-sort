@@ -1,0 +1,44 @@
+.app-header {
+  position: relative;
+  display: block;
+  top: 0;
+  left: 0;
+  width: 100%;
+  color: #fff;
+  height: 100vh;
+}
+
+.app-toolbar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+  height: 64px;
+  padding: 0 16px;
+  pointer-events: visible;
+  font-size: 18px;
+}
+
+#large-toolbar {
+  margin-bottom: 24px;
+  margin-bottom: 16px;
+}
+
+.small-title,
+.large-title {
+  transform-origin: right top;
+  position: relative;
+  z-index: 11;
+  background: -webkit-linear-gradient(#1b8ecf, #18222d);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.large-title {
+  will-change: transform, opacity;
+  font-size: 56px;
+  font-size: 2em;
+  font-weight: 700;
+}

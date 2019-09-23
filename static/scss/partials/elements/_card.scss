@@ -1,0 +1,686 @@
+// ANIMATION FOR CARD .HAS-BACKGROUND
+@keyframes animated-arrow-right {
+  0% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+  25% {
+    opacity: 0;
+    transform: translateX(10px) scale(0.9);
+  }
+  26% {
+    opacity: 0;
+    transform: translateX(-10px) scale(0.9);
+  }
+  55% {
+    opacity: 1;
+    transform: translateX(0) scale(1);
+  }
+}
+
+%_themed-card__label {
+  .input {
+    &__label,
+    &__switch-label {
+      color: palette(white);
+    }
+  }
+}
+
+.card {
+  display: flex;
+  margin-bottom: rem(16px, $base-font-size-mobile);
+  padding: 0;
+  background-color: palette(white);
+  box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
+  flex-direction: column;
+
+  @include breakpoint(sm) {
+    margin-bottom: rem(32px);
+  }
+
+  > img {
+    flex-shrink: 0;
+    object-fit: cover;
+  }
+
+  &__heading {
+    padding: rem(16px, $base-font-size-mobile) rem(16px, $base-font-size-mobile)
+      rem(12px, $base-font-size-mobile);
+    border-bottom: 1px solid palette(grey, border);
+
+    @include breakpoint(sm) {
+      padding: rem(32px) rem(32px) rem(24px);
+    }
+
+    + .card__body {
+      padding-top: rem(12px, $base-font-size-mobile);
+
+      @include breakpoint(sm) {
+        padding-top: rem(24px);
+      }
+    }
+  }
+
+  &__body {
+    width: 100%;
+    padding: rem(16px, $base-font-size-mobile);
+    text-align: left;
+    align-self: center;
+    hyphens: none;
+
+    @include breakpoint(sm) {
+      max-width: (
+        rem(768px) + (rem(16px) * 4)
+      ); // Inner content should be max. 768 pixels
+      padding: rem(32px);
+    }
+
+    &:first-of-type {
+      padding-top: rem(16px, $base-font-size-mobile);
+
+      @include breakpoint(sm) {
+        padding-top: rem(32px);
+      }
+    }
+
+    &:last-of-type {
+      padding-bottom: rem(16px, $base-font-size-mobile);
+
+      @include breakpoint(sm) {
+        padding-bottom: rem(32px);
+      }
+    }
+
+    + .card__body {
+      border-top: 1px solid palette(grey, border);
+    }
+  }
+
+  &--primary {
+    @extend %_themed-card__label;
+
+    color: palette(white);
+  }
+
+  &--secondary {
+    @extend %_themed-card__label;
+
+    background-color: palette(black);
+    color: palette(white);
+
+    .btn--secondary {
+      border: 1px solid palette(white);
+    }
+  }
+
+  &--tertiary {
+    @extend %_themed-card__label;
+
+    background-color: palette(grey);
+    color: palette(white);
+  }
+
+  &--transparent {
+    background-color: transparent;
+    box-shadow: none;
+  }
+
+  &--horizontal {
+    display: flex;
+    flex-direction: column;
+
+    @include breakpoint(md) {
+      flex-direction: row;
+    }
+
+    > figure {
+      overflow: hidden;
+      width: 100%;
+      max-height: 100%;
+      margin: 0;
+      order: -1;
+      align-self: flex-start;
+
+      @include breakpoint(md) {
+        display: flex;
+        width: auto;
+        min-width: 50%;
+        height: 480px;
+        padding: 0;
+        align-items: center;
+        flex-direction: column;
+        order: 0;
+      }
+
+      @include breakpoint(lg) {
+        height: 352px;
+      }
+
+      img {
+        width: 100%;
+        max-width: 100%;
+
+        @include breakpoint(md) {
+          width: auto;
+          max-width: none;
+          height: 100%;
+
+          @supports (object-fit: cover) {
+            width: 100%;
+            object-fit: cover;
+          }
+        }
+      }
+
+      video {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    > .card__body {
+      padding: rem(16px, $base-font-size-mobile);
+      align-self: flex-start;
+
+      @include breakpoint(sm) {
+        min-width: 50%;
+        padding: rem(32px);
+      }
+    }
+
+    + .card__body {
+      border-top: 1px solid palette(grey, border);
+    }
+  }
+
+  &--full-width {
+    margin-right: rem(-16px, $base-font-size-mobile);
+    margin-left: rem(-16px, $base-font-size-mobile);
+
+    @include breakpoint(sm) {
+      margin-right: 0;
+      margin-left: 0;
+    }
+
+    .card__body {
+      padding-bottom: rem(24px, $base-font-size-mobile);
+
+      @include breakpoint(sm) {
+        padding-bottom: rem(32px);
+      }
+    }
+  }
+
+  &--full-height {
+    height: 100%;
+    margin-bottom: 0;
+
+    @include breakpoint(sm) {
+      margin-bottom: 0;
+    }
+
+    .card__body {
+      height: 100%;
+      flex: 1;
+
+      @media all and (-ms-high-contrast: none), (-ms-high-contrast: active) {
+        flex: auto;
+      }
+    }
+  }
+
+  &--top {
+    @include rem(margin-top, -52px, -32px);
+
+    position: relative;
+    z-index: 1;
+
+    @include breakpoint(md) {
+      margin-top: rem(-52px);
+    }
+  }
+
+  &__figure-square {
+    @include breakpoint(sm) {
+      display: flex;
+      flex-direction: row;
+    }
+
+    > .card__body {
+      &:first-of-type {
+        width: auto;
+        padding-bottom: rem(8px, $base-font-size-mobile);
+
+        @include breakpoint(sm) {
+          padding: rem(32px) rem(16px) rem(32px) rem(32px);
+          align-self: flex-start;
+        }
+      }
+
+      &:last-of-type {
+        padding-top: rem(8px, $base-font-size-mobile);
+        border: 0;
+
+        @include breakpoint(sm) {
+          padding: rem(32px) rem(32px) rem(32px) rem(16px);
+          flex-grow: 1;
+        }
+
+        @include breakpoint(md) {
+          align-self: flex-start;
+        }
+      }
+    }
+
+    + .card__body {
+      border-top: 1px solid palette(grey, border);
+    }
+  }
+
+  &--avatar {
+    $_avatar-offset-xs: $_avatar-size-xs / 2;
+    $_avatar-offset-sm-up: $_avatar-size-sm-up / 2;
+
+    margin-top: $_avatar-offset-xs;
+
+    @include breakpoint(sm) {
+      margin-top: $_avatar-offset-sm-up;
+    }
+
+    .card__body:first-of-type {
+      padding-top: 0;
+    }
+
+    .figure-square {
+      margin-top: -$_avatar-offset-xs;
+
+      @include breakpoint(sm) {
+        margin-top: -$_avatar-offset-sm-up;
+      }
+
+      img {
+        border-radius: 50%;
+      }
+    }
+  }
+
+  &__button {
+    margin-top: auto;
+  }
+
+  &__video figure {
+    margin: 0;
+
+    a {
+      position: relative;
+      z-index: 1;
+      display: block;
+      background: palette(white);
+      transition: background 0.2s ease-in;
+      pointer-events: auto;
+
+      &:hover {
+        cursor: pointer;
+
+        img {
+          opacity: 0.7;
+        }
+
+        .video-controls {
+          text-shadow: 0 0 8px rgba(17, 17, 17, 0.8);
+        }
+      }
+    }
+
+    img {
+      opacity: 1;
+      transition: opacity 0.2s ease-in;
+      object-fit: cover;
+    }
+  }
+
+  &--links {
+    width: 100%;
+    margin-top: 0;
+    margin-bottom: 0;
+
+    @include breakpoint(md) {
+      width: calc(#{(100% / 3)} - 1.5rem);
+      margin: 0.75rem;
+    }
+
+    .card--background {
+      @include rem(min-height, 56px);
+
+      @include breakpoint(sm) {
+        height: auto;
+      }
+
+      .card__body {
+        position: relative;
+        z-index: 1;
+      }
+
+      p {
+        display: none;
+
+        @include breakpoint(sm) {
+          display: block;
+        }
+      }
+    }
+
+    .list--links li {
+      @include breakpoint(md) {
+        padding-right: 1.5rem;
+        padding-left: 1.5rem;
+        border-top: 0;
+        border-bottom: 1px solid palette(grey, border);
+
+        &:last-of-type {
+          margin-bottom: 31px;
+          padding-bottom: 1rem;
+        }
+      }
+    }
+  }
+
+  &--background {
+    position: relative;
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: cover;
+    color: palette(white);
+    text-decoration: none;
+
+    &::before {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 0;
+      display: block;
+      content: '';
+      background: palette(black, overlay);
+    }
+
+    .card__body {
+      z-index: 0;
+    }
+
+    h3 {
+      position: relative;
+    }
+
+    .input {
+      color: palette(grey, tertiary);
+    }
+  }
+
+  &--slim {
+    .card__body {
+      @include rem(padding, 16px, 24px 32px);
+
+      h3 {
+        @include rem(font-size, 14px, 16px);
+      }
+    }
+
+    a.card__body {
+      // scss-lint:disable QualifyingElement
+      text-decoration: none;
+
+      &:hover {
+        box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.1);
+        cursor: pointer;
+      }
+
+      p {
+        text-decoration: none;
+      }
+    }
+
+    .card__heading + img {
+      @include rem(height, 151px, 415px);
+    }
+
+    iframe {
+      width: 100%;
+    }
+
+    img {
+      @include rem(height, 151px, 415px);
+    }
+  }
+
+  &__alert {
+    @include rem(padding, 16px, 24px);
+    @include rem(margin, -16px, 0);
+    @include rem(margin-top, 16px, 24px);
+
+    &--info {
+      background: palette(grey, background);
+      color: palette(black);
+    }
+
+    &--tip {
+      background: palette(alert, light_blue);
+      color: palette(alert, turquoise);
+
+      a {
+        color: palette(alert, turquoise);
+      }
+    }
+
+    a {
+      font-weight: 700;
+    }
+
+    p + p {
+      margin-top: 0;
+    }
+  }
+}
+
+// scss-lint:disable QualifyingElement
+a.card--background {
+  background-size: 105%;
+  transition: background-size 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+
+  &:hover {
+    background-size: 115%;
+  }
+
+  // scss-lint:disable DeclarationOrder
+  @include breakpoint(sm) {
+    height: 224px;
+    background-size: 125%;
+
+    &:hover {
+      background-size: 135%;
+    }
+  }
+
+  @include breakpoint(md) {
+    background-size: 140%;
+
+    &:hover {
+      background-size: 150%;
+    }
+  }
+
+  // scss-lint:enable DeclarationOrder
+
+  .card__body {
+    color: palette(white);
+    transition: 0.2s all;
+
+    h3::after {
+      // scss-lint:disable PlaceholderInExtend
+
+      position: relative;
+      top: 0;
+      left: 8px;
+      font-size: rem(12px, $base-font-size-mobile);
+
+      @include breakpoint(sm) {
+        top: -2px;
+        font-size: rem(12px);
+      }
+    }
+
+    &:hover {
+      @include breakpoint(md) {
+        h3::after {
+          animation-name: animated-arrow-right;
+          animation-duration: 1.4s;
+          animation-iteration-count: 1;
+          animation-timing-function: linear;
+        }
+      }
+    }
+  }
+}
+
+.card-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  @include breakpoint(sm) {
+    width: calc(100% + #{rem(16px)});
+    margin-right: rem(-8px);
+    margin-left: rem(-8px);
+    justify-content: initial;
+  }
+
+  &--sm {
+    @include rem(margin-left, -16px, -12px);
+    @include rem(margin-right, -16px, -12px);
+
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    align-items: stretch;
+  }
+
+  .card {
+    &:not(.card--background) {
+      display: none;
+      min-height: 120px;
+      flex: 1;
+
+      @include breakpoint(sm) {
+        display: flex;
+        width: 100%;
+        height: 186px;
+        margin-right: rem(8px);
+        margin-left: rem(8px);
+      }
+
+      @include breakpoint(md) {
+        height: 166px;
+      }
+
+      @include breakpoint(lg) {
+        height: 186px;
+      }
+    }
+
+    &--background {
+      width: calc(50% - #{rem(4px, $base-font-size-mobile)});
+      height: 132px;
+      margin-bottom: rem(8px, $base-font-size-mobile);
+      background-size: 130%;
+
+      &:hover {
+        background-size: 140%;
+      }
+
+      // scss-lint:disable DeclarationOrder
+      @include screen-min(360px) {
+        height: 154px;
+      }
+
+      @include screen-min(375px) {
+        height: 156px;
+      }
+
+      @include screen-min(414px) {
+        height: 174px;
+      }
+
+      @include breakpoint(sm) {
+        width: calc(#{(100 / 3)}% - #{rem(16px)});
+        height: 186px;
+        margin: 0 rem(8px) rem(16px);
+        background-size: 130%;
+
+        &:hover {
+          background-size: 140%;
+        }
+      }
+
+      @include breakpoint(md) {
+        width: calc(20% - #{rem(16px)});
+        height: 166px;
+        background-size: 145%;
+
+        &:hover {
+          background-size: 155%;
+        }
+      }
+
+      @include breakpoint(lg) {
+        height: 186px;
+        background-size: 130%;
+
+        &:hover {
+          background-size: 140%;
+        }
+      }
+
+      &__title {
+        overflow: hidden;
+        height: 100%;
+        font-size: rem(20px, $base-font-size-mobile);
+        font-weight: 700;
+        letter-spacing: -0.6px;
+        line-height: 1;
+        hyphens: auto;
+
+        @include breakpoint(sm) {
+          font-size: rem(20px);
+        }
+      }
+
+      .card__body {
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        height: 100%;
+      }
+    }
+  }
+}
+
+h1,
+h2,
+h3,
+.h1,
+.h2,
+.h3 {
+  + .card {
+    margin-top: rem(8px, $base-font-size-mobile);
+
+    @include breakpoint(sm) {
+      margin-top: rem(16px);
+    }
+  }
+}
+
+h3 + .card-grid {
+  @include rem(margin-top, 16px);
+}
