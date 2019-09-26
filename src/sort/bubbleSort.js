@@ -47,8 +47,8 @@ export const bubbleSort = async arr => {
       }
     }
     if (!change) break;
-    sleep(3000);
   }
+  await sleep(1000);
   alert('sorting done 🥳');
   return newList;
 };
