@@ -1,7 +1,7 @@
 body {
   font-family: 'Lato', sans-serif;
   font-size: 16px;
-  height: 100vh;
+  height: fit-content;
   width: 100vw;
 }
 
@@ -24,6 +24,10 @@ body {
   font-size: 0.7em;
 }
 
+.tester {
+  transition: all 0.3s ease-in;
+}
+
 .container .bar-group {
   transition: opacity 0.3s;
 }
@@ -36,6 +40,9 @@ body {
 /* But don't fade the hovered bar... */
 .container .bar-group:hover {
   opacity: 1;
+  rect {
+    height: 8px;
+  }
 }
 
 .container .bar-group:hover .name-label {
@@ -44,4 +51,16 @@ body {
 
 .container .bar-group:hover .value-label {
   font-size: 0.8em;
+}
+
+@mixin random-bgr() {
+  fill: rgb(random(255), random(255), random(255));
+}
+
+@for $i from 0 to 250 {
+  .color-#{$i} {
+    rect {
+      @include random-bgr();
+    }
+  }
 }

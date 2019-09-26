@@ -7,7 +7,7 @@ const Page = ({ children }) => {
   return (
     <>
       <Heads />
-      <Container fixed>{children}</Container>
+      <Container>{children}</Container>
     </>
   );
 };

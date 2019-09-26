@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import MenuItem from '@material-ui/core/MenuItem';
 import TextField from '@material-ui/core/TextField';
-import { Button } from '@material-ui/core';
+import { Button, Grid } from '@material-ui/core';
+import { bubbleSort } from '../../sort/bubbleSort';
+import { shuffleArr } from '../helpers/shuffleArr';
 
 import Bars from './Bars';
 import './bar.scss';
@@ -15,16 +17,24 @@ const useStyles = makeStyles(theme => ({
   textField: {
     marginLeft: theme.spacing(1),
     marginRight: theme.spacing(1),
-    width: 300
+    width: '90%',
+    '& label': {
+      textShadow: 'unset',
+      fontSize: '20px',
+      paddingBottom: '8px'
+    }
   },
   dense: {
     marginTop: 19
   },
   menu: {
-    width: 200
+    width: 200,
+    '& ul': {
+      backgroundColor: '#f589bb'
+    }
   },
   button: {
-    maxWidth: 'fit-content',
+    maxWidth: 'auto',
     backgroundColor: '#f589bb',
     color: 'white',
     '&:hover': {
@@ -34,45 +44,106 @@ const useStyles = makeStyles(theme => ({
   }
 }));
 
-const dummyData = [20, 40, 35, 50, 55, 40, 99];
+const algoritmes = ['bubbleSort', 'def', 'ghi', 'jkl', 'mno'];
 
 const index = () => {
   const classes = useStyles();
-  const [data, setData] = useState(dummyData);
+  const [data, setData] = useState([]);
+  const [algo, setAlgo] = useState('bubbleSort');
   const [num, setNum] = useState(7);
+  const [btnState, setBtnState] = useState(false);
+  const arrayGap = 9;
+
+  console.log('btnState', btnState);
+
+  useEffect(() => {
+    genArray();
+  }, [num]);
 
   const genArray = () =>
-    setData(
-      Array.from({ length: num }, () =>
-        Math.floor(Math.random() * (1 - num * 10) + num * 10)
-      )
-    );
+    setData(shuffleArr(Array.from({ length: num }, (_, i) => i + arrayGap)));
+
+  const vheight = () => {
+    if (num < 55) {
+      return '90vh';
+    } else if (num >= 55 && num < 80) {
+      return '100vh';
+    } else if (num >= 80 && num < 120) {
+      return '120vh';
+    } else return '200vh';
+  };
 
   return (
-    <div className='flex-column'>
-      <TextField
-        id='standard-number'
-        label='How many in array (max 45)'
-        value={num}
-        onChange={() => setNum(Number(event.target.value))}
-        type='number'
-        className={classes.textField}
-        margin='normal'
-      />
-      <Button
-        variant='contained'
-        className={classes.button}
-        onClick={() => genArray()}
-      >
-        Set Array
-      </Button>
+    <div className='flex-column' justify='center' style={{ display: 'flex' }}>
+      <Grid container direction='row'>
+        <Grid item xs={6}>
+          <TextField
+            id='standard-number'
+            label='How many in array (max 150)'
+            value={num}
+            onChange={() => setNum(Number(event.target.value))}
+            type='phone'
+            className={classes.textField}
+            margin='normal'
+            min={1}
+            onKeyPress={() => genArray()}
+            disabled={btnState}
+          />
+          <Button
+            variant='contained'
+            className={classes.button}
+            onClick={() => genArray()}
+            disabled={btnState}
+          >
+            Set Array
+          </Button>
+        </Grid>
+        <Grid item xs={6}>
+          <TextField
+            id='standard-number'
+            label='Select algorithm'
+            value={algo}
+            onChange={e => setAlgo(e.target.value)}
+            type='phone'
+            className={classes.textField}
+            margin='normal'
+            min={1}
+            disabled={btnState}
+            SelectProps={{
+              MenuProps: {
+                className: classes.menu
+              }
+            }}
+            select
+          >
+            {algoritmes.map(option => (
+              <MenuItem key={option} value={option}>
+                {option}
+              </MenuItem>
+            ))}
+          </TextField>
 
-      <svg width='80vw' height='80vh'>
+          <Button
+            variant='contained'
+            className={classes.button}
+            disabled={btnState}
+            onClick={async () => {
+              await setBtnState(true);
+              await bubbleSort(data);
+              await setBtnState(false);
+            }}
+          >
+            Start algorithm
+          </Button>
+        </Grid>
+      </Grid>
+
+      <svg width='100%' height={vheight()}>
         <g className='container'>
           <text className='title' x='10' y='30'>
             Your Array
           </text>
-          <g className='chart' transform='translate(100,60)'>
+          <g className='chart' transform='translate(0,60)'>
             <Bars data={data} />
           </g>
         </g>
