@@ -21,7 +21,9 @@ const useStyles = makeStyles(theme => ({
     '& label': {
       textShadow: 'unset',
       fontSize: '20px',
-      paddingBottom: '8px'
+      paddingBottom: '8px',
+      color: 'black',
+      fontWeight: '500'
     }
   },
   dense: {
@@ -30,16 +32,16 @@ const useStyles = makeStyles(theme => ({
   menu: {
     width: 200,
     '& ul': {
-      backgroundColor: '#f589bb'
+      backgroundColor: '#cdaadd'
     }
   },
   button: {
     maxWidth: 'auto',
-    backgroundColor: '#f589bb',
+    backgroundColor: '#b759e2',
     color: 'white',
     '&:hover': {
       backgroundColor: 'white',
-      color: '#f589bb'
+      color: '#b759e2'
     }
   }
 }));
@@ -88,6 +90,7 @@ const index = () => {
             min={1}
             onKeyPress={() => genArray()}
             disabled={btnState}
+            style={{ paddingTop: '24px' }}
           />
           <Button
             variant='contained'
@@ -108,6 +111,7 @@ const index = () => {
             className={classes.textField}
             margin='normal'
             min={1}
+            style={{ paddingTop: '24px' }}
             disabled={btnState}
             SelectProps={{
               MenuProps: {
