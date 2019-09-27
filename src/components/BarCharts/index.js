@@ -32,16 +32,15 @@ const useStyles = makeStyles(theme => ({
   menu: {
     width: 200,
     '& ul': {
-      backgroundColor: '#cdaadd'
+      backgroundColor: '#e7f4f5'
     }
   },
   button: {
-    maxWidth: 'auto',
-    backgroundColor: '#b759e2',
+    backgroundColor: '#07c2d0',
     color: 'white',
     '&:hover': {
       backgroundColor: 'white',
-      color: '#b759e2'
+      color: '#07c2d0'
     }
   }
 }));
