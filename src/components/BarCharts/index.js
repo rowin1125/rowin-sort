@@ -133,7 +133,8 @@ const index = () => {
             disabled={btnState}
             onClick={async () => {
               await setBtnState(true);
-              await bubbleSort(data);
+              console.log('data', data);
+              await bubbleSort(data, setData);
               await setBtnState(false);
             }}
           >

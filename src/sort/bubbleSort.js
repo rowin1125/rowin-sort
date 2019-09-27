@@ -14,7 +14,7 @@ const time = list => {
   } else return 10;
 };
 
-export const bubbleSort = async arr => {
+export const bubbleSort = async (arr, setData) => {
   const newList = [...arr];
 
   for (let i = 0; i < newList.length - 1; i++) {
@@ -49,6 +49,8 @@ export const bubbleSort = async arr => {
     if (!change) break;
   }
   await sleep(1000);
-  alert('sorting done 🥳');
-  return newList;
+  alert('sorting done and we reset the data for you 🥳');
+  await sleep(1000);
+
+  return setData(newList);
 };

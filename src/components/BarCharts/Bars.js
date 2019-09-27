@@ -4,6 +4,7 @@ import Bar from './Bar';
 const Bars = ({ data }) => {
   const heighest = Math.max.apply(null, data);
   const barHeight = 9;
+  console.log('data2', data);
 
   return (
     <>
