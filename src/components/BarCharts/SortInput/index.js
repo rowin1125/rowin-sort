@@ -11,6 +11,7 @@ const index = ({
   algoBtnState,
   data,
   num,
+  setReset,
   setAlgo,
   setAlgoBtnState,
   setBtnState,
@@ -54,6 +55,7 @@ const index = ({
         disabled={algoBtnState || num === 0}
         onClick={async () => {
           await setAlgoBtnState(true);
+          await setReset(true);
           await setBtnState(true);
           await bubbleSort(data, setData, setNum);
           await setBtnState(false);

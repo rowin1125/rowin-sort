@@ -1,9 +1,10 @@
 import React from 'react';
 
 import TextField from '@material-ui/core/TextField';
-import Input from '@material-ui/core/Input';
 import { Button, Grid } from '@material-ui/core';
 import FormHelperText from '@material-ui/core/FormHelperText';
+
+import { sleep } from '../../../sort/bubbleSort';
 import { GenStyles } from '../styles';
 
 const index = ({
@@ -11,6 +12,8 @@ const index = ({
   btnState,
   genArray,
   num,
+  reset,
+  setReset,
   setAlgoBtnState,
   setBtnState,
   setNum
@@ -37,10 +40,12 @@ const index = ({
         min={1}
         error={toBig()}
         onKeyPress={() => {
+          sleep(300);
+          console.log('hi');
           genArray();
           setAlgoBtnState(false);
         }}
-        disabled={algoBtnState || btnState}
+        disabled={reset || btnState}
         style={{ paddingTop: '24px' }}
         aria-describedby='component-error-text'
       />
@@ -73,6 +78,7 @@ const index = ({
             genArray();
             setNum(0);
             setBtnState(false);
+            setReset(false);
           }}
           disabled={toBig() || btnState}
         >

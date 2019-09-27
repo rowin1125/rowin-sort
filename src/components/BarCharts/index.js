@@ -14,6 +14,7 @@ const index = () => {
   const [num, setNum] = useState(0);
   const [btnState, setBtnState] = useState(false);
   const [algoBtnState, setAlgoBtnState] = useState(false);
+  const [reset, setReset] = useState(false);
 
   const arrayGap = 9;
   const showCat = num === 0 && !algoBtnState ? true : false;
@@ -43,6 +44,8 @@ const index = () => {
           btnState={btnState}
           genArray={genArray}
           num={num}
+          reset={reset}
+          setReset={setReset}
           setAlgoBtnState={setAlgoBtnState}
           setAlgoBtnState={setAlgoBtnState}
           setBtnState={setBtnState}
@@ -53,6 +56,7 @@ const index = () => {
           algoBtnState={algoBtnState}
           data={data}
           num={num}
+          setReset={setReset}
           setAlgo={setAlgo}
           setAlgoBtnState={setAlgoBtnState}
           setBtnState={setBtnState}
