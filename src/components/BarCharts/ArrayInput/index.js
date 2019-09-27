@@ -41,7 +41,6 @@ const index = ({
         error={toBig()}
         onKeyPress={() => {
           sleep(300);
-          console.log('hi');
           genArray();
           setAlgoBtnState(false);
         }}
