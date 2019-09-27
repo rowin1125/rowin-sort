@@ -44,6 +44,7 @@ const index = () => {
           setAlgoBtnState={setAlgoBtnState}
           num={num}
           btnState={btnState}
+          setAlgoBtnState={setAlgoBtnState}
         />
         <SortInput
           setAlgo={setAlgo}
@@ -56,12 +57,12 @@ const index = () => {
           setNum={setNum}
         />
       </Grid>
-      <Grid container direction='row' className='speech '>
+      <Grid container direction='row'>
         {showCat ? (
-          <>
+          <div className='speech '>
             <SpeechBubble mood='shocked' color='#07c2d0' />
-            <h3>Please prove the arrow of a number bellow 150 🤓</h3>
-          </>
+            <h3>Please provide the array of a number bellow 150 🤓</h3>
+          </div>
         ) : (
           <svg width='100%' height={vheight()}>
             <g className='container'>

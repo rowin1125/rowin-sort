@@ -14,7 +14,6 @@ const Bars = ({ data }) => {
             key={i}
             transform={`translate(0, ${i * barHeight + barHeight} )`}
           >
-            {console.log(data)}
             <Bar amount={amount} barHeight={barHeight} heighest={heighest} />
           </g>
         ))}
