@@ -6,15 +6,15 @@ const time = list => {
   if (list.length < 15) {
     return 125;
   } else if (list.length >= 15 && list.length < 30) {
-    return 100;
-  } else if (list.length >= 30 && list.length < 50) {
     return 75;
+  } else if (list.length >= 30 && list.length < 50) {
+    return 50;
   } else if (list.length >= 50 && list.length < 100) {
-    return 35;
-  } else return 10;
+    return 20;
+  } else return 7;
 };
 
-export const bubbleSort = async (arr, setData, setNum) => {
+export const bubbleSort = async arr => {
   const newList = [...arr];
 
   for (let i = 0; i < newList.length - 1; i++) {
