@@ -18,10 +18,15 @@ body {
 }
 
 .bar-group .value-label {
+  @media screen and (max-width: 969px) {
+    font-size: 0.8rem;
+  }
   text-anchor: end;
   fill: #fff;
   font-weight: 900;
-  font-size: 0.7em;
+  font-size: 1rem;
+  text-align: center;
+  text-shadow: 1px 2px 3px rgba(0, 0, 0, 0.8);
 }
 
 .tester {
@@ -50,7 +55,10 @@ body {
 }
 
 .container .bar-group:hover .value-label {
-  font-size: 0.8em;
+  @media screen and (max-width: 969px) {
+    font-size: 1rem;
+  }
+  font-size: 1.2rem;
 }
 
 @mixin random-bgr() {
