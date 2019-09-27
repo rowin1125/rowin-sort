@@ -62,7 +62,7 @@ const index = ({
           }}
           disabled={toBig() || btnState}
         >
-          Set Array
+          Shuffle Array
         </Button>
       ) : (
         <Button
