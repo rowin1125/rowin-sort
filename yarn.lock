@@ -4787,6 +4787,13 @@ react-is@^16.7.0, react-is@^16.8.1, react-is@^16.8.6:
   resolved "https://npm.staging.nxdev.nl/react-is/-/react-is-16.9.0.tgz#21ca9561399aad0ff1a7701c01683e8ca981edcb"
   integrity sha512-tJBzzzIgnnRfEm046qRcURvwQnZVXmuCbscxUO5RWrGTXpon2d4c8mI0D8WE6ydVIm29JiLB6+RslkIvym9Rjw==
 
+react-kawaii@^0.14.4:
+  version "0.14.4"
+  resolved "https://npm.staging.nxdev.nl/react-kawaii/-/react-kawaii-0.14.4.tgz#a7a2a947e03855fe90e9fb390eda48ac7eab255d"
+  integrity sha512-edElJHDY2heHxadwS1HF7NwYnky4EveNS824aTC12WRujTWgQUni4IlfH74Mk1O8/CCpIMiunEHhK/gIpnLLlg==
+  dependencies:
+    prop-types "^15.6.2"
+
 react-transition-group@^4.3.0:
   version "4.3.0"
   resolved "https://npm.staging.nxdev.nl/react-transition-group/-/react-transition-group-4.3.0.tgz#fea832e386cf8796c58b61874a3319704f5ce683"

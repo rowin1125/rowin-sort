@@ -1,10 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Bar from './Bar';
 
 const Bars = ({ data }) => {
   const heighest = Math.max.apply(null, data);
   const barHeight = 9;
-  console.log('data2', data);
 
   return (
     <>
@@ -15,6 +14,7 @@ const Bars = ({ data }) => {
             key={i}
             transform={`translate(0, ${i * barHeight + barHeight} )`}
           >
+            {console.log(data)}
             <Bar amount={amount} barHeight={barHeight} heighest={heighest} />
           </g>
         ))}

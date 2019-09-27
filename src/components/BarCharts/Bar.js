@@ -8,17 +8,21 @@ const Bar = ({ amount, heighest }) => {
   let width = widthScale(amount);
 
   return (
-    <g className={`bar-group color-${amount}`}>
-      <RectBar width={width} />
-      <text
-        className='value-label'
-        x={`${width - 1}% `}
-        y={yMid}
-        alignmentBaseline='middle'
-      >
-        {amount}
-      </text>
-    </g>
+    <>
+      {amount && (
+        <g className={`bar-group color-${amount}`}>
+          <RectBar width={width} />
+          <text
+            className='value-label'
+            x={`${width - 1}% `}
+            y={yMid}
+            alignmentBaseline='middle'
+          >
+            {amount}
+          </text>
+        </g>
+      )}
+    </>
   );
 };
 

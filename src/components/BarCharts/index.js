@@ -1,68 +1,29 @@
 import React, { useState, useEffect } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import MenuItem from '@material-ui/core/MenuItem';
-import TextField from '@material-ui/core/TextField';
-import { Button, Grid } from '@material-ui/core';
-import { bubbleSort } from '../../sort/bubbleSort';
+import { Grid } from '@material-ui/core';
+import ArrayInput from './ArrayInput';
+import SortInput from './SortInput';
 import { shuffleArr } from '../helpers/shuffleArr';
+import { SpeechBubble } from 'react-kawaii';
 
 import Bars from './Bars';
 import './bar.scss';
 
-const useStyles = makeStyles(theme => ({
-  container: {
-    display: 'flex',
-    flexWrap: 'wrap'
-  },
-  textField: {
-    marginLeft: theme.spacing(1),
-    marginRight: theme.spacing(1),
-    width: '90%',
-    '& label': {
-      textShadow: 'unset',
-      fontSize: '20px',
-      paddingBottom: '8px',
-      color: 'black',
-      fontWeight: '500'
-    }
-  },
-  dense: {
-    marginTop: 19
-  },
-  menu: {
-    width: 200,
-    '& ul': {
-      backgroundColor: '#e7f4f5'
-    }
-  },
-  button: {
-    backgroundColor: '#07c2d0',
-    color: 'white',
-    '&:hover': {
-      backgroundColor: 'white',
-      color: '#07c2d0'
-    }
-  }
-}));
-
-const algoritmes = ['bubbleSort', 'def', 'ghi', 'jkl', 'mno'];
-
 const index = () => {
-  const classes = useStyles();
   const [data, setData] = useState([]);
   const [algo, setAlgo] = useState('bubbleSort');
-  const [num, setNum] = useState(7);
+  const [num, setNum] = useState(0);
   const [btnState, setBtnState] = useState(false);
-  const arrayGap = 9;
+  const [algoBtnState, setAlgoBtnState] = useState(false);
 
-  console.log('btnState', btnState);
+  const arrayGap = 9;
+  const showCat = num === 0 ? true : false;
+
+  const genArray = () =>
+    setData(shuffleArr(Array.from({ length: num }, (_, i) => i + arrayGap)));
 
   useEffect(() => {
     genArray();
   }, [num]);
-
-  const genArray = () =>
-    setData(shuffleArr(Array.from({ length: num }, (_, i) => i + arrayGap)));
 
   const vheight = () => {
     if (num < 55) {
@@ -77,81 +38,43 @@ const index = () => {
   return (
     <div className='flex-column' justify='center' style={{ display: 'flex' }}>
       <Grid container direction='row'>
-        <Grid item xs={6}>
-          <TextField
-            id='standard-number'
-            label='How many in array (max 150)'
-            value={num}
-            onChange={() => setNum(Number(event.target.value))}
-            type='phone'
-            className={classes.textField}
-            margin='normal'
-            min={1}
-            onKeyPress={() => genArray()}
-            disabled={btnState}
-            style={{ paddingTop: '24px' }}
-          />
-          <Button
-            variant='contained'
-            className={classes.button}
-            onClick={() => genArray()}
-            disabled={btnState}
-          >
-            Set Array
-          </Button>
-        </Grid>
-        <Grid item xs={6}>
-          <TextField
-            id='standard-number'
-            label='Select algorithm'
-            value={algo}
-            onChange={e => setAlgo(e.target.value)}
-            type='phone'
-            className={classes.textField}
-            margin='normal'
-            min={1}
-            style={{ paddingTop: '24px' }}
-            disabled={btnState}
-            SelectProps={{
-              MenuProps: {
-                className: classes.menu
-              }
-            }}
-            select
-          >
-            {algoritmes.map(option => (
-              <MenuItem key={option} value={option}>
-                {option}
-              </MenuItem>
-            ))}
-          </TextField>
-
-          <Button
-            variant='contained'
-            className={classes.button}
-            disabled={btnState}
-            onClick={async () => {
-              await setBtnState(true);
-              console.log('data', data);
-              await bubbleSort(data, setData);
-              await setBtnState(false);
-            }}
-          >
-            Start algorithm
-          </Button>
-        </Grid>
+        <ArrayInput
+          setNum={setNum}
+          genArray={genArray}
+          setAlgoBtnState={setAlgoBtnState}
+          num={num}
+          btnState={btnState}
+        />
+        <SortInput
+          setAlgo={setAlgo}
+          setAlgoBtnState={setAlgoBtnState}
+          algoBtnState={algoBtnState}
+          setBtnState={setBtnState}
+          data={data}
+          setData={setData}
+          algo={algo}
+          setNum={setNum}
+        />
       </Grid>
-
-      <svg width='100%' height={vheight()}>
-        <g className='container'>
-          <text className='title' x='10' y='30'>
-            Your Array
-          </text>
-          <g className='chart' transform='translate(0,60)'>
-            <Bars data={data} />
-          </g>
-        </g>
-      </svg>
+      <Grid container direction='row' className='speech '>
+        {showCat ? (
+          <>
+            <SpeechBubble mood='shocked' color='#07c2d0' />
+            <h3>Please prove the arrow of a number bellow 150 🤓</h3>
+          </>
+        ) : (
+          <svg width='100%' height={vheight()}>
+            <g className='container'>
+              <text className='title' x='10' y='30'>
+                Your Array
+              </text>
+              <g className='chart' transform='translate(0,60)'>
+                <Bars data={data} />
+              </g>
+            </g>
+          </svg>
+        )}
+      </Grid>
     </div>
   );
 };
