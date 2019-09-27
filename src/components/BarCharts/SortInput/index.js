@@ -7,13 +7,14 @@ import { bubbleSort } from '../../../sort/bubbleSort';
 import { GenStyles } from '../styles';
 
 const index = ({
+  algo,
+  algoBtnState,
+  data,
+  num,
   setAlgo,
   setAlgoBtnState,
-  algoBtnState,
   setBtnState,
-  data,
   setData,
-  algo,
   setNum
 }) => {
   const algoritmes = ['bubbleSort', 'def', 'ghi', 'jkl', 'mno'];
@@ -50,7 +51,7 @@ const index = ({
       <Button
         variant='contained'
         className={classes.button}
-        disabled={algoBtnState}
+        disabled={algoBtnState || num === 0}
         onClick={async () => {
           await setAlgoBtnState(true);
           await setBtnState(true);

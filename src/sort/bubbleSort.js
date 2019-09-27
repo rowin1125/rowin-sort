@@ -49,8 +49,7 @@ export const bubbleSort = async (arr, setData, setNum) => {
     if (!change) break;
   }
   await sleep(1000);
-  alert('sorting done and we reset the data for you 🥳');
+  alert('sorting done 🥳! Check out your array');
 
-  await setNum(0);
-  return setData(newList);
+  return newList;
 };

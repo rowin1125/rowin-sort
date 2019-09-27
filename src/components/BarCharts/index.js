@@ -16,7 +16,7 @@ const index = () => {
   const [algoBtnState, setAlgoBtnState] = useState(false);
 
   const arrayGap = 9;
-  const showCat = num === 0 ? true : false;
+  const showCat = num === 0 && !algoBtnState ? true : false;
 
   const genArray = () =>
     setData(shuffleArr(Array.from({ length: num }, (_, i) => i + arrayGap)));
@@ -39,21 +39,24 @@ const index = () => {
     <div className='flex-column' justify='center' style={{ display: 'flex' }}>
       <Grid container direction='row'>
         <ArrayInput
-          setNum={setNum}
-          genArray={genArray}
-          setAlgoBtnState={setAlgoBtnState}
-          num={num}
+          algoBtnState={algoBtnState}
           btnState={btnState}
+          genArray={genArray}
+          num={num}
           setAlgoBtnState={setAlgoBtnState}
+          setAlgoBtnState={setAlgoBtnState}
+          setBtnState={setBtnState}
+          setNum={setNum}
         />
         <SortInput
+          algo={algo}
+          algoBtnState={algoBtnState}
+          data={data}
+          num={num}
           setAlgo={setAlgo}
           setAlgoBtnState={setAlgoBtnState}
-          algoBtnState={algoBtnState}
           setBtnState={setBtnState}
-          data={data}
           setData={setData}
-          algo={algo}
           setNum={setNum}
         />
       </Grid>
