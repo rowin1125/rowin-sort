@@ -15,6 +15,8 @@ export const time = list => {
 };
 
 export const bubbleSort = async arr => {
+  console.log('bubble');
+
   const newList = [...arr];
 
   for (let i = 0; i < newList.length - 1; i++) {

@@ -13,9 +13,7 @@ const index = ({
   num,
   setReset,
   setAlgoBtnState,
-  setBtnState,
-  setData,
-  setNum
+  setBtnState
 }) => {
   const classes = GenStyles();
   const [algo, setAlgo] = useState('bubbleSort');
@@ -24,15 +22,15 @@ const index = ({
 
   const currentSortFunction = () => {
     switch (algo) {
-      case algo === 'bubbleSort':
-        return bubbleSort(data);
+      case 'bubbleSort':
+        console.log('buubl');
+        bubbleSort(data);
         break;
-      case algo === 'mergeSort':
-        return mergeSort(data);
+      case 'mergeSort':
+        mergeSort(data);
         break;
 
       default:
-        break;
     }
   };
 

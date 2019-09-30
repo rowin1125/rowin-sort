@@ -1,3 +1,4 @@
+console.log('merge');
 export const mergeSort = list => {
   const newList = [...list];
   const len = newList.length;
