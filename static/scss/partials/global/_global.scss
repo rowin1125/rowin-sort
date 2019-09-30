@@ -28,12 +28,16 @@ body {
       from {
         ry: 11;
       }
+      85% {
+        ry: 11;
+      }
       to {
         ry: 4;
       }
     }
     #kawaii-face__mouth__shocked {
-      animation: 1s mouth infinite alternate ease-in;
+      animation: 1.5s mouth infinite alternate ease-in;
+      animation-delay: 1s;
     }
   }
 }

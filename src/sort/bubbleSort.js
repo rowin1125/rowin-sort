@@ -2,7 +2,7 @@ export const sleep = ms => {
   return new Promise(resolve => setTimeout(resolve, ms));
 };
 
-const time = list => {
+export const time = list => {
   if (list.length < 15) {
     return 125;
   } else if (list.length >= 15 && list.length < 30) {

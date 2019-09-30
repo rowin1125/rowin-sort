@@ -10,7 +10,6 @@ import './bar.scss';
 
 const index = () => {
   const [data, setData] = useState([]);
-  const [algo, setAlgo] = useState('bubbleSort');
   const [num, setNum] = useState(0);
   const [btnState, setBtnState] = useState(false);
   const [algoBtnState, setAlgoBtnState] = useState(false);
@@ -52,12 +51,10 @@ const index = () => {
           setNum={setNum}
         />
         <SortInput
-          algo={algo}
           algoBtnState={algoBtnState}
           data={data}
           num={num}
           setReset={setReset}
-          setAlgo={setAlgo}
           setAlgoBtnState={setAlgoBtnState}
           setBtnState={setBtnState}
           setData={setData}
