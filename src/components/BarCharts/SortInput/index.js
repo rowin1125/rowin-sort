@@ -23,9 +23,6 @@ const index = ({
   const algoritmes = ['bubbleSort', 'mergeSort', 'ghi', 'jkl', 'mno'];
 
   const currentSortFunction = () => {
-    console.log('algo', algo);
-    console.log('case bubble', algo === 'bubbleSort');
-    console.log('cases merge', algo === 'mergeSort');
     switch (algo) {
       case algo === 'bubbleSort':
         return bubbleSort(data);
@@ -43,7 +40,6 @@ const index = ({
     await setAlgoBtnState(true);
     await setReset(true);
     await setBtnState(true);
-    // await bubbleSort(data);
     await currentSortFunction();
     await setBtnState(false);
   };
